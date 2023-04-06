@@ -109,7 +109,7 @@ class Admin extends BaseController
         if (session()->get('akun_username') != '') {
             session()->setFlashdata("success", "Anda berhasil logout");
         }
-        echo view("admin/v_login");
+        echo view("users/beranda/index");        
     }
 
     function lupapassword()

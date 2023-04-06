@@ -362,8 +362,9 @@ h6 {
 }
 
 #hero .hero-img {
-  width: 50%;
+  width: 40%;
   float: right;
+  margin-top: -60px;
 }
 
 @media (max-width: 991px) {
@@ -1152,7 +1153,7 @@ section {
   margin-bottom: 30px;
 }
 
-#clients .client-logo {
+#clients .client-logo{
   padding: 64px;
   display: flex;
   justify-content: center;
@@ -1164,7 +1165,7 @@ section {
   height: 160px;
 }
 
-#clients .client-logo:hover img {
+#clients .client-logo:hover img{
   transform: scale(1.2);
 }
 
