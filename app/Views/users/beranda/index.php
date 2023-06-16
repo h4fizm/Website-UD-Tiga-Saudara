@@ -10,7 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?= base_url("beranda/assets") ?>//img/favicon.png" rel="icon">
+  
+  <link href="<?= base_url("beranda/assets") ?>//img/pens.png" rel="icon">
   <link href="<?= base_url("beranda/assets") ?>//img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -54,7 +55,7 @@
           <li><a class="nav-link scrollto" href="#services">Features</a></li>
           <li><a class="nav-link scrollto " href="#portfolio">Gallery</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Sign In</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <!-- <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -71,8 +72,10 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> -->
-              <li><a class="nav-link scrollto" href="/admin/login">Login</a></li>
-              <li><a class="nav-link scrollto" href="#contact">Register</a></li>
+              <li><a class="nav-link scrollto" href="/admin/login">Admin</a></li>
+              <li><a class="nav-link scrollto" href="/user/login">User</a></li>
+              <li><a class="nav-link scrollto" href="/operator/login">Operator</a></li>
+            </ul>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -286,7 +289,6 @@
                 <p>App</p>
                 <div>
                   <a href="<?= base_url("beranda/assets") ?>//img/website/portofolio/gambar1.jpeg" data-gallery="portfolioGallery" title="Gambar UD. Tiga Saudara" class="portfolio-lightbox link-preview"><i class="bi bi-plus"></i></a>
-                  <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
             </div>
@@ -300,7 +302,6 @@
                 <p>Web</p>
                 <div>
                   <a href="<?= base_url("beranda/assets") ?>//img/website/portofolio/gambar2.jpeg" class="portfolio-lightbox link-preview" data-gallery="portfolioGallery" title="Gambar UD. Tiga Saudara"><i class="bi bi-plus"></i></a>
-                  <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
             </div>
@@ -314,7 +315,6 @@
                 <p>App</p>
                 <div>
                   <a href="<?= base_url("beranda/assets") ?>//img/website/portofolio/gambar3.jpeg" class="portfolio-lightbox link-preview" data-gallery="portfolioGallery" title="Gambar UD. Tiga Saudara"><i class="bi bi-plus"></i></a>
-                  <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
             </div>
@@ -328,7 +328,6 @@
                 <p>Card</p>
                 <div>
                   <a href="<?= base_url("beranda/assets") ?>//img/website/portofolio/gambar4.jpeg" class="portfolio-lightbox link-preview" data-gallery="portfolioGallery" title="Gambar UD. Tiga Saudara"><i class="bi bi-plus"></i></a>
-                  <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
             </div>
@@ -342,7 +341,6 @@
                 <p>Web</p>
                 <div>
                   <a href="<?= base_url("beranda/assets") ?>//img/website/portofolio/gambar5.jpeg" class="portfolio-lightbox link-preview" data-gallery="portfolioGallery" title="Gambar UD. Tiga Saudara"><i class="bi bi-plus"></i></a>
-                  <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
             </div>
@@ -356,7 +354,6 @@
                 <p>App</p>
                 <div>
                   <a href="<?= base_url("beranda/assets") ?>//img/website/portofolio/gambar6.jpeg" class="portfolio-lightbox link-preview" data-gallery="portfolioGallery" title="Gambar UD. Tiga Saudara"><i class="bi bi-plus"></i></a>
-                  <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
                 </div>
               </div>
             </div>
@@ -460,7 +457,7 @@
               <img src="<?= base_url("beranda/assets") ?>//img/team-3.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>William Anderson</h4>
+                  <h4>Moch. Ridwan, S.T, M.T</h4>
                   <span>Advisor III</span>
                   <div class="social">
                     <!-- <a href=""><i class="bi bi-twitter"></i></a>
@@ -614,9 +611,10 @@
 
               <br>
               <div class="social-links">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/6282140692933" class="twitter"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.google.com/maps/place/UD.+Tiga+Saudara/@-7.2551484,112.7810268,20z/data=!4m6!3m5!1s0x2dd7f98df84a91fb:0x5bf5ed0bf1e50282!8m2!3d-7.2549968!4d112.7814481!16s%2Fg%2F11b6d6lcyy"
+                 class="facebook"><i class="bi bi-geo-alt"></i></a>
+                <a href="https://www.instagram.com/farel_hm/" class="instagram"><i class="bi bi-instagram"></i></a>
               </div>
               <!-- <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
             <form action="" method="post">

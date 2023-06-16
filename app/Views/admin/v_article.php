@@ -4,12 +4,7 @@
 </div>
 <div class="card-body">
     <div class="row mb-3">
-        <div class="col-lg-3 pt-1 pb-1">
-            <form action="" method="GET">
-                <input type="text" placeholder="Katakunci..." name="katakunci" class="form-control" value="<?php echo $katakunci ?>">
-            </form>
-        </div>
-        <div class="col-lg-9 pt-1 pb-1 text-end">
+        <div class="col-lg-9 pt-1 pb-1">
             <a href="<?php echo site_url("admin/article/tambah") ?>" class="btn btn-xl btn-primary">+ Tambah Barang</a>
         </div>
     </div>
@@ -36,15 +31,16 @@
     <?php
     }
     ?>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="myTable">
         <thead>
             <tr>
-                <th class="col-1">No.</th>
-                <th class="col-3">Nama Barang</th>
-                <th class="col-1">Stok</th>
-                <th class="col-2">Status</th>
-                <th class="col-3">Tanggal</th>
-                <th class="col-2 text-center">Aksi</th>
+                <th class="text-center col-1">No.</th>
+                <th class="text-center col-1">Kode</th>
+                <th class="text-center col-2">Nama Barang</th>
+                <th class="text-center col-1">Stok</th>
+                <th class="text-center col-1">Status</th>
+                <th class="text-center col-3">Catatan</th>
+                <th class="text-center col-4 text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -53,16 +49,22 @@
                 $post_id = $value['post_id'];
                 $link_edit = site_url("admin/article/edit/$post_id");
                 $link_delete = site_url("admin/article/?aksi=hapus&post_id=$post_id");
+                $post_id = $value['post_id'];
+                $post_thumbnail = $value['post_thumbnail']
             ?>
                 <tr>
-                    <td><?php echo $nomor ?></td>
-                    <td><?php echo $value['post_title'] ?></td>
-                    <td><?php echo $value['post_description'] ?></td>
-                    <td><?php echo $value['post_status'] ?></td>
-                    <td><?php echo tanggal_indonesia($value['post_time']) ?></td>
-                    <td>
+                    <td class="text-center"><?php echo $nomor ?></td>
+                    <td class="text-center"><?php echo $value['post_kode'] ?></td>
+                    <td class="text-center"><?php echo $value['post_title'] ?></td>
+                    <td class="text-center"><?php echo $value['post_description'] ?></td>
+                    <td class="text-center"><?php echo $value['post_status'] ?></td>
+                    
+                    <td class="text-center"><?php echo $value['post_content'] ?></td>
+                    
+                    <td class="text-center">
                         <a href='<?php echo $link_edit ?>' class="btn btn-sm btn-warning">Edit</a>
                         <a href="<?php echo $link_delete ?>" onclick="return confirm('Yakin akan menghapus data ini?')" class="btn btn-sm btn-danger">Hapus</a>
+                        <a href="<?php echo base_url(LOKASI_UPLOAD . "/" . $post_thumbnail) ?>" class="btn btn-sm btn-info">Preview</a>
                     </td>
                 </tr>
             <?php
@@ -71,5 +73,4 @@
             ?>
         </tbody>
     </table>
-    <?php echo $pager->links('dt', 'datatable') ?>
 </div>

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login</title>
+    <title>Admin Login</title>
+    <link href="<?= base_url("beranda/assets") ?>//img/pens.png" rel="icon">
     <link href="<?php echo base_url('admin') ?>/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
@@ -21,7 +22,7 @@
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4">Login</h3>
+                                    <h3 class="text-center font-weight-light my-4">Administrator</h3>
                                 </div>
                                 <div class="card-body">
                                     <?php
@@ -67,11 +68,11 @@
                                         </div>
                                     </form>
                                 </div>
-                                <!-- <div class="card-footer text-center py-3">
+                                <div class="card-footer text-center py-3">
                                     <div class="small">
-                                        <a href="register.html">Need an account? Sign up!</a>
+                                        Log in as User ?  <a href="/user/login">Click Here!</a>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,7 +83,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
                         <div>
                             <!-- <a href="#">Privacy Policy</a>
                             &middot;

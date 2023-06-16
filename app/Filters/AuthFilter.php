@@ -14,6 +14,9 @@ class AuthFilter implements FilterInterface
         if (!session()->get('akun_username')) {
             return redirect()->to('admin/login');
         }
+        if (!session()->get('akun_username')) {
+            return redirect()->to('user/login');
+        }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

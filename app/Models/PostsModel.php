@@ -8,7 +8,7 @@ class PostsModel extends Model
 {
     protected $table = "posts";
     protected $primaryKey = "post_id";
-    protected $allowedFields = ['username', 'post_title', 'post_title_seo', 'post_status', 'post_type', 'post_thumbnail', 'post_description', 'post_content'];
+    protected $allowedFields = ['username', 'post_kode', 'post_title', 'post_title_seo', 'post_status', 'post_type', 'post_thumbnail', 'post_description', 'post_content'];
 
 
     function setTitleSeo($title)
@@ -66,28 +66,56 @@ class PostsModel extends Model
     }
 
 
-    function listPost($post_type, $jumlahBaris, $katakunci = null, $group_dataset = null)
+    public function listPost($post_type, $jumlahBaris, $katakunci = null, $group_dataset = null, $start_date = null, $end_date = null)
     {
-        $builder = $this->table($this->table);
-
-        #katakunci = Hello World
-        $arr_katakunci = explode(" ", $katakunci);
-        #query = "select * from posts where post_type='article' and (post_title like '%hello%' or post_description like '%hello%')";
-        $builder->groupStart();
-        for ($x = 0; $x < count($arr_katakunci); $x++) {
-            $builder->orLike('post_title', $arr_katakunci[$x]);
-            $builder->orLike('post_description', $arr_katakunci[$x]);
-            $builder->orLike('post_content', $arr_katakunci[$x]);
-        }
-        $builder->groupEnd();
-
+        $builder = $this->db->table('posts');
         $builder->where('post_type', $post_type);
-        $builder->orderBy('post_time', 'desc');
-
-        $data['record'] = $builder->paginate($jumlahBaris, $group_dataset);
-        $data['pager'] = $builder->pager;
-
-        return $data;
+        if ($katakunci != null) {
+            $builder->like('post_title', $katakunci);
+        }
+        if ($start_date != null && $end_date != null) {
+            $builder->where('post_time >=', $start_date);
+            $builder->where('post_time <=', $end_date);
+            $builder->groupBy($group_dataset); // menambahkan klausul GROUP BY
+        }
+        $builder->orderBy('post_time', 'DESC');
+        $query = $builder->get();
+    
+        $results['record'] = $query->getResultArray();
+    
+        $pager = \Config\Services::pager();
+        $pager->setPath('dt');
+        $pager->makeLinks(1, $jumlahBaris, count($results['record']), 'datatable');
+    
+        $results['pager'] = $pager;
+    
+        return $results;
+    }
+    
+    public function listPostLimit($post_type, $jumlahBaris, $katakunci = null, $group_dataset = null, $start_date = null, $end_date = null)
+    {
+        $builder = $this->db->table('posts');
+        $builder->where('post_type', $post_type);
+        if ($katakunci != null) {
+            $builder->like('post_title', $katakunci);
+        }
+        if ($start_date != null && $end_date != null) {
+            $builder->where('post_time >=', $start_date);
+            $builder->where('post_time <=', $end_date);
+            $builder->groupBy($group_dataset); // menambahkan klausul GROUP BY
+        }
+        $builder->orderBy('post_time', 'DESC')->limit(5);
+        $query = $builder->get();
+    
+        $results['record'] = $query->getResultArray();
+    
+        $pager = \Config\Services::pager();
+        $pager->setPath('dt');
+        $pager->makeLinks(1, $jumlahBaris, count($results['record']), 'datatable');
+    
+        $results['pager'] = $pager;
+    
+        return $results;
     }
 
     function getPost($post_id)
@@ -95,6 +123,15 @@ class PostsModel extends Model
         $builder = $this->table($this->table);
 
         $builder->where('post_id', $post_id);
+        $query = $builder->get();
+        return $query->getRowArray();
+    }
+
+    function getPostByKode($post_kode)
+    {
+        $builder = $this->table($this->table);
+
+        $builder->where('post_kode', $post_kode);
         $query = $builder->get();
         return $query->getRowArray();
     }
@@ -117,5 +154,12 @@ class PostsModel extends Model
         $query = $builder->get();
         return $query->getRowArray();
     }
+
+    
+
+    
+    
+
+    
 }
 

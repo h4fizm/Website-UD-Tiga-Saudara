@@ -11,13 +11,22 @@ class AdminModel extends Model
     protected $allowedFields = ['username', 'password', 'nama_lengkap', 'token'];
 
     /**
-     * untuk ambil data
+     * untuk insert data
+     */
+   
+    public function register($data)
+    {
+        return $this->insert($data);
+    }
+
+    /**
+     * untuk ambil data berdasarkan username atau email
      */
     public function getData($parameter)
     {
-        $builder = $this->table($this->table);
-        $builder->where('username=', $parameter);
-        $builder->orWhere('email=', $parameter);
+        $builder = $this->db->table($this->table);
+        $builder->where('username', $parameter);
+        $builder->orWhere('email', $parameter);
         $query = $builder->get();
         return $query->getRowArray();
     }
@@ -25,8 +34,9 @@ class AdminModel extends Model
     /** untuk update / simpan data */
     public function updateData($data)
     {
-        $builder = $this->table($this->table);
-        if ($builder->save($data)) {
+        $builder = $this->db->table($this->table);
+        $builder->where('email', $data['email']);
+        if ($builder->update($data)) {
             return true;
         } else {
             return false;

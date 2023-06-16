@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="html5-qrcode.min.js"></script>
+</head>
+
+<body>
+    <div id="reader" style="width: 50%"></div>
+    <h5 id="results">DATA</h5>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <!-- Nama Barang -->
+        <div class="mb-3">
+            <label for="input_post_title" class="form-label">Nama Barang</label>
+            <input type="text" class="form-control" id="input_post_judul" name="post_title" value="">
+        </div>
+        <!-- Status ditambahkan atau dikurangkan -->
+        <div class="mb-3">
+            <label for="input_post_status" class="form-label">Status</label>
+            <select name="post_status" id="input_post_status" class="form-select">
+                <option value="ditambahkan">(+) ditambahkan</option>
+                <option value="dikurangkan">(-) dikurangkan</option>
+            </select>
+        </div>
+        <!-- upload gambar -->
+        <div class="mb-3">
+            <label for="input_post_thumbnail" class="form-label">Upload Gambar</label>
+            <input type="file" class="form-control" id="input_post_thumbnail" name="post_thumbnail">
+        </div>
+        <!-- jumlah stok -->
+        <div class="mb-3">
+            <label for="input_post_description" class="form-label">Jumlah Stok</label>
+            <textarea class="form-control" id="input_post_description" name="post_description" rows="1"></textarea>
+        </div>
+        <!-- keterangan/notes -->
+        <div class="mb-3">
+            <label for="input_post_content" class="form-label">Keterangan</label>
+            <textarea class="form-control" id="input_post_content" name="post_content" rows="10"></textarea>
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Simpan Data" class="btn btn-primary">
+        </div>
+    </form>
+    </div>
+
+    <script>
+        var jsonData = {
+            nama: "Sabun",
+            status: "dikurangkan",
+            stok: "20",
+            notes: "This is the sample post content."
+        };
+
+        var jsonString = JSON.stringify(jsonData);
+        console.log(jsonString); // Output the JSON string to the console
+
+        function onScanSuccess(decodedText, decodedResult) {
+            // handle the scanned code as you like, for example:
+            document.getElementById("results").innerHTML = decodedText;
+            var qrData = JSON.parse(decodedText);
+            console.log(qrData)
+            console.log(qrData.hasOwnProperty('input_post_judul'))
+
+            // nama barang
+            if (qrData.hasOwnProperty('input_post_judul')) {
+                document.getElementById('input_post_judul').value = qrData.input_post_judul;
+            }
+            // status
+            if (qrData.hasOwnProperty('input_post_status')) {
+                document.getElementById('input_post_status').value = qrData.input_post_status;
+            }
+            // stok
+            if (qrData.hasOwnProperty('input_post_description')) {
+                document.getElementById('input_post_description').value = qrData.input_post_description;
+            }
+            // deskripsi
+            if (qrData.hasOwnProperty('input_post_content')) {
+                document.getElementById('input_post_content').value = qrData.input_post_content;
+            }
+        }
+
+        // function onScanFailure(error) {
+        //     // handle scan failure, usually better to ignore and keep scanning.
+        //     // for example:
+        //     console.warn(`Code scan error = ${error}`);
+        // }
+
+        // html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+        const html5QrCode = new Html5Qrcode("reader");
+        const config = { fps: 10 };
+
+        // If you want to prefer back camera
+        html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess);
+    </script>
+</body>
+
+</html>
